@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 
@@ -131,7 +130,7 @@ export function Pricing() {
             for every scale
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-400">
-            Whether you're a startup or an enterprise, our AI legal solutions scale with your needs
+            Whether you are a startup or an enterprise, our AI legal solutions scale with your needs
           </p>
         </div>
         <div className="-mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">

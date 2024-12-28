@@ -1,5 +1,4 @@
 import Image from 'next/image'
-
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-faqs.jpg'
 
@@ -79,7 +78,7 @@ export function Faqs() {
             Frequently Asked Questions
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            If you can't find what you're looking for, reach out to our AI support team for instant assistance.
+            If you cannot find what you are looking for, reach out to our AI support team for instant assistance.
           </p>
         </div>
         <ul
