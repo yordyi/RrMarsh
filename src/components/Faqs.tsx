@@ -5,51 +5,51 @@ import backgroundImage from '@/images/background-faqs.jpg'
 const faqs = [
   [
     {
-      question: 'How accurate is your AI legal advisor?',
+      question: "How accurate is your AI legal advisor?",
       answer:
-        'Our AI system is trained on millions of legal cases and documents, achieving over 95% accuracy in legal analysis. All critical recommendations are reviewed by our expert legal team to ensure reliability.',
+        "Our AI system is trained on millions of legal cases and documents, achieving over 95% accuracy in legal analysis. All critical recommendations are reviewed by our expert legal team to ensure reliability.",
     },
     {
-      question: 'How do you protect my data and privacy?',
-      answer: 'We employ bank-level encryption and strict security protocols. All data is encrypted both in transit and at rest. We comply with GDPR, CCPA, and other privacy regulations.',
+      question: "How do you protect my data and privacy?",
+      answer: "We employ bank-level encryption and strict security protocols. All data is encrypted both in transit and at rest. We comply with GDPR, CCPA, and other privacy regulations.",
     },
     {
-      question: 'Is the service available 24/7?',
+      question: "Is the service available 24/7?",
       answer:
-        'Yes, our AI system is available round-the-clock. Enterprise clients get 24/7 human support, while Professional and Starter plans have access to human support during business hours.',
+        "Yes, our AI system is available round-the-clock. Enterprise clients get 24/7 human support, while Professional and Starter plans have access to human support during business hours.",
     },
   ],
   [
     {
-      question: 'How does your AI technology work?',
+      question: "How does your AI technology work?",
       answer:
-        'We use advanced machine learning models, including natural language processing and deep learning, to analyze legal documents, predict outcomes, and generate recommendations based on vast legal databases.',
+        "We use advanced machine learning models, including natural language processing and deep learning, to analyze legal documents, predict outcomes, and generate recommendations based on vast legal databases.",
     },
     {
-      question: 'Can I upgrade or change my plan?',
+      question: "Can I upgrade or change my plan?",
       answer:
-        'Absolutely! You can upgrade your plan at any time with immediate effect. Downgrades take effect at the end of your billing cycle. Unused credits are prorated and transferred.',
+        "Absolutely! You can upgrade your plan at any time with immediate effect. Downgrades take effect at the end of your billing cycle. Unused credits are prorated and transferred.",
     },
     {
-      question: 'Are AI-generated legal documents legally binding?',
+      question: "Are AI-generated legal documents legally binding?",
       answer:
-        'Our AI generates legally compliant documents following current regulations. While they are designed to be legally sound, we recommend professional review for critical documents, which is included in our Enterprise plan.',
+        "Our AI generates legally compliant documents following current regulations. While they are designed to be legally sound, we recommend professional review for critical documents, which is included in our Enterprise plan.",
     },
   ],
   [
     {
-      question: 'What types of legal matters can your AI handle?',
+      question: "What types of legal matters can your AI handle?",
       answer:
-        'Our AI specializes in corporate law, intellectual property, employment law, contracts, and regulatory compliance. For specialized areas, we provide expert human oversight and guidance.',
+        "Our AI specializes in corporate law, intellectual property, employment law, contracts, and regulatory compliance. For specialized areas, we provide expert human oversight and guidance.",
     },
     {
-      question: 'How do you keep up with changing laws?',
-      answer: 'Our AI models are continuously updated with the latest legal changes and precedents. We monitor global legal developments and update our knowledge base daily.',
+      question: "How do you keep up with changing laws?",
+      answer: "Our AI models are continuously updated with the latest legal changes and precedents. We monitor global legal developments and update our knowledge base daily.",
     },
     {
-      question: 'What makes your AI different from traditional legal services?',
+      question: "What makes your AI different from traditional legal services?",
       answer:
-        'Our AI provides instant, 24/7 access to legal insights, processes thousands of documents in seconds, and learns from millions of cases to offer data-driven recommendations at a fraction of traditional legal costs.',
+        "Our AI provides instant, 24/7 access to legal insights, processes thousands of documents in seconds, and learns from millions of cases to offer data-driven recommendations at a fraction of traditional legal costs.",
     },
   ],
 ]
