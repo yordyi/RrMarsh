@@ -1,175 +1,184 @@
+'use client'
+
+import { Container } from '../../components/Container'
+import { Header } from '../../components/Header'
+import { Footer } from '../../components/Footer'
+import { CallToAction } from '../../components/CallToAction'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Container } from '@/components/Container'
-import { Button } from '@/components/Button'
-import Link from 'next/link'
+
+const mainFeatures = [
+  {
+    title: 'AI-Powered Analysis',
+    description: 'Our advanced AI algorithms analyze complex legal documents with high accuracy, identifying key clauses and potential risks.',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+      </svg>
+    ),
+  },
+  {
+    title: '24/7 Availability',
+    description: 'Access legal assistance anytime, anywhere. Our AI system is always ready to help with your legal queries and document analysis.',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Multilingual Support',
+    description: 'Handle legal documents in multiple languages with our advanced natural language processing capabilities.',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Secure & Confidential',
+    description: 'Your legal documents and data are protected with enterprise-grade security and encryption.',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+      </svg>
+    ),
+  },
+]
+
+const additionalFeatures = [
+  {
+    title: 'Legal Research',
+    description: 'Access comprehensive legal research tools powered by AI to find relevant cases and precedents.',
+    image: '/images/legal-research.jpg',
+  },
+  {
+    title: 'Contract Review',
+    description: 'Automated contract review and analysis to identify potential risks and opportunities.',
+    image: '/images/contract-review.jpg',
+  },
+  {
+    title: 'Legal Consultation',
+    description: 'Get instant answers to your legal questions through our AI-powered consultation system.',
+    image: '/images/legal-consultation.jpg',
+  },
+]
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+}
 
 export default function LearnMore() {
   return (
-    <div className="relative isolate overflow-hidden bg-white">
-      {/* Background image */}
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/images/legal-background.jpg"
-          alt="Legal background"
-          fill
-          className="object-cover opacity-10"
-          priority
-        />
-      </div>
-      {/* Hero section */}
-      <div className="relative pt-14">
-        <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-          <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
-        </div>
-        
+    <>
+      <Header />
+      <main>
+      <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-white to-blue-50" />
         <Container>
-          <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-            <h1 className="mt-24 text-4xl font-bold tracking-tight text-gray-900 sm:mt-10 sm:text-6xl">
-              Explore the New Era of AI-Powered Legal Services
-            </h1>
-            <div className="mt-6 text-lg leading-8 text-gray-600">
-              Through cutting-edge AI technology, we are redefining how legal services are delivered. From document analysis to legal research, from contract review to legal consultation, our AI assistant is always by your side.
-            </div>
-          </div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="relative"
+          >
+            <motion.div variants={itemVariants} className="text-center">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Advanced Features
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-gray-600">
+                Discover how our AI-powered legal assistant can transform your legal workflow
+              </p>
+            </motion.div>
+            <motion.div variants={itemVariants} className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+              <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
+                {mainFeatures.map((feature) => (
+                  <motion.div
+                    key={feature.title}
+                    variants={itemVariants}
+                    className="flex flex-col bg-white rounded-2xl shadow-sm ring-1 ring-gray-200/50 p-6 hover:shadow-lg transition-shadow duration-300"
+                  >
+                    <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
+                      <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-purple-600 text-white">
+                        {feature.icon}
+                      </div>
+                      {feature.title}
+                    </dt>
+                    <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                      <p className="flex-auto">{feature.description}</p>
+                    </dd>
+                  </motion.div>
+                ))}
+              </dl>
+            </motion.div>
+          </motion.div>
         </Container>
       </div>
 
-      {/* Features section */}
-      <Container className="mt-24 sm:mt-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {/* Feature images */}
-            <div className="relative h-64 overflow-hidden rounded-lg shadow-lg mb-6">
-              <Image
-                src="/images/ai-analysis.jpg"
-                alt="AI Analysis"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="relative h-64 overflow-hidden rounded-lg shadow-lg mb-6">
-              <Image
-                src="/images/24-7-service.jpg"
-                alt="24/7 Service"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="relative h-64 overflow-hidden rounded-lg shadow-lg mb-6">
-              <Image
-                src="/images/continuous-learning.jpg"
-                alt="Continuous Learning"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <h2 className="text-base font-semibold leading-7 text-indigo-600">Intelligent Analysis</h2>
-              <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Powered by Deep Learning</p>
-              <p className="mt-6 text-base leading-7 text-gray-600">
-                Using the latest natural language processing technology, our system can understand complex legal texts and provide accurate analysis and advice.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-base font-semibold leading-7 text-indigo-600">24/7 Service</h2>
-              <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Always Available</p>
-              <p className="mt-6 text-base leading-7 text-gray-600">
-                Anytime, anywhere, our AI assistant can provide immediate legal support and advice, ensuring you get help when you need it.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-base font-semibold leading-7 text-indigo-600">Continuous Learning</h2>
-              <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Constantly Evolving</p>
-              <p className="mt-6 text-base leading-7 text-gray-600">
-                Our system stays up-to-date with the latest laws and regulations through continuous learning and updates, ensuring timely and accurate advice.
-              </p>
-            </div>
-          </div>
-        </div>
-      </Container>
-
-      {/* Use cases section */}
-      <Container className="mt-24 sm:mt-32">
-        <div className="relative">
-          <div className="absolute inset-0 -z-10">
-            <div className="h-full w-full bg-gradient-to-tr from-indigo-50 to-blue-50 opacity-90" />
-          </div>
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl lg:mx-0">
+      {/* Additional Features Section */}
+      <div className="relative py-16 sm:py-24 lg:py-32 bg-white">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mx-auto max-w-2xl lg:max-w-none"
+          >
+            <div className="text-center mb-16">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Use Cases
+                Comprehensive Legal Solutions
               </h2>
-              <p className="mt-6 text-lg leading-8 text-gray-600">
-                From personal legal consultation to corporate legal support, our AI assistant can adapt to various legal service scenarios.
+              <p className="mt-4 text-lg text-gray-600">
+                Explore our full suite of AI-powered legal tools and services
               </p>
             </div>
-
-            <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-              <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-                {[
-                  {
-                    name: 'Contract Review',
-                    description:
-                      'Automatically analyze contract terms, identify potential risks, and provide modification suggestions to ensure your rights are protected.',
-                    image: '/images/contract-review.jpg'
-                  },
-                  {
-                    name: 'Legal Research',
-                    description:
-                      'Quickly retrieve relevant laws, regulations, and cases, providing in-depth legal analysis and insights.',
-                    image: '/images/legal-research.jpg'
-                  },
-                  {
-                    name: 'Legal Consultation',
-                    description:
-                      'Provide immediate legal advice, answer legal questions, and help you make informed decisions.',
-                    image: '/images/legal-consultation.jpg'
-                  },
-                ].map((feature) => (
-                  <div key={feature.name} className="flex flex-col">
-                    <div className="relative h-48 overflow-hidden rounded-lg shadow-lg mb-4">
-                      <Image
-                        src={feature.image}
-                        alt={feature.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <dt className="text-base font-semibold leading-7 text-gray-900">
-                      {feature.name}
-                    </dt>
-                    <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                      <p className="flex-auto">{feature.description}</p>
-                    </dd>
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+              {additionalFeatures.map((feature) => (
+                <motion.div
+                  key={feature.title}
+                  whileHover={{ scale: 1.02 }}
+                  className="relative overflow-hidden rounded-2xl bg-white shadow-lg"
+                >
+                  <div className="h-48 w-full relative">
+                    <Image
+                      src={feature.image}
+                      alt={feature.title}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                ))}
-              </dl>
+                  <div className="p-6">
+                    <h3 className="text-lg font-semibold text-gray-900">{feature.title}</h3>
+                    <p className="mt-2 text-sm text-gray-600">{feature.description}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          </div>
-        </div>
-      </Container>
+          </motion.div>
+        </Container>
+      </div>
 
-      {/* CTA section */}
-      <Container className="mt-24 sm:mt-32">
-        <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
-          <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Start Using AI Legal Assistant
-          </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
-            Experience AI-powered legal services now, making legal work more efficient, accurate, and convenient.
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Link href="/register">
-              <Button color="white">Start Free Trial</Button>
-            </Link>
-          </div>
-          <div className="absolute -top-24 right-0 -z-10 transform-gpu blur-3xl" aria-hidden="true">
-            <div className="aspect-[1404/767] w-[87.75rem] bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-25" />
-          </div>
-        </div>
-      </Container>
-    </div>
+      <CallToAction />
+      </main>
+      <Footer />
+    </>
   )
 }
